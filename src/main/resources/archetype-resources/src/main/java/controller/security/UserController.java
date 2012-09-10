@@ -2,7 +2,10 @@ package ${package}.controller.security;
 
 import ${package}.domain.security.Authority;
 import ${package}.domain.security.User;
+import ${package}.service.security.UserService;
 import java.util.List;
+import javax.annotation.Resource;
+import org.easyj.orm.SingleService;
 import org.easyj.rest.controller.jpa.JPAGenericEntityController;
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.stereotype.Controller;
@@ -13,11 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin/user")
-public class UserController extends JPAGenericEntityController<User, Short>{ 
+public class UserController extends JPAGenericEntityController<User, Short>{
 
     @ModelAttribute("auths")
     protected List<Authority> auths() {
         return getService().findAll(Authority.class);
+    }
+
+    @Override
+    protected User findOne(Short primaryKey) {
+        return getService().findUserWithAuthorities(primaryKey);
     }
     
     @InitBinder
@@ -31,5 +39,16 @@ public class UserController extends JPAGenericEntityController<User, Short>{
               return new Authority((String)element);
             }
         });
+    }
+    
+    @Override
+    @Resource(name="userService")
+    public void setService(SingleService service) {
+        this.service = (UserService) service;
+    }
+    
+    @Override
+    public UserService getService() {
+        return (UserService) service;
     }
 }

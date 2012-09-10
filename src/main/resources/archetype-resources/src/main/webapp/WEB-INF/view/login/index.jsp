@@ -10,39 +10,33 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>${project.name} - Login</title>
+        <title>${artifactId} - Login</title>
         <%@include file="../../includes/main.jsp" %>
-        <script type="text/javascript" src="<c:url value="/static/js/scriptaculous/scriptaculous.js?effect" />"></script>
-        <script type="text/javascript" src="<c:url value="/static/js/login.js?" />"></script>
     </head>
     <body>
-        <div id="main">
+        <div class="container">
             <h1>${project.name} - Login</h1>
-            <div id="login">
-                <div id="loginError" style="display:none;">
-                <c:choose>
-                    <c:when test="${symbol_dollar}{not empty param.error}">
-                        Usuário não autorizado. Username ou senha inválidos. Tente novamente.<br>
-                    </c:when>
-                    <c:when test="${symbol_dollar}{not empty param.timeout}">
-                        Infelizmente sua sessão expirou ou você não se logou anteriormente. Por favor logue-se novamente.
-                    </c:when>
-                </c:choose>
+            <c:if test="${symbol_dollar}{not empty param.error or not empty param.timeout}">
+                <br/>
+                <div>
+                    <c:choose>
+                        <c:when test="${symbol_dollar}{not empty param.error}">
+                            <p class="btn btn-danger">Usuário não autorizado. Username ou senha inválidos. Tente novamente.</p>
+                        </c:when>
+                        <c:when test="${symbol_dollar}{not empty param.timeout}">
+                            <p class="btn btn-warning">Infelizmente sua sessão expirou ou você não se logou anteriormente. Por favor logue-se novamente.</p>
+                        </c:when>
+                    </c:choose>
                 </div>
-                <form id="loginForm" name="login" action="<c:url value="/authenticate" />" method="post">
-                    <div class="username">
-                        <div><label for="<%= UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY%>">Login</label></div>
-                        <input autofocus type="text" name="<%= UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY%>" id="username" value="<c:if test="${symbol_dollar}{not empty param.login_error}"><%= session.getAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_LAST_USERNAME_KEY) %></c:if>" />
-                    </div>
-                    <div class="password">
-                        <div><label for="<%= UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY%>">Senha</label></div>
-                        <input type="password" name="<%= UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY%>" id="password" />
-                    </div>
-                    <div class="button">
-                        <input type="submit" value="Send"/>
-                    </div>
-                </form>
-            </div>
+                <br/>
+            </c:if>
+            <form name="login" action="<c:url value="/authenticate" />" method="post">
+                <label for="<%= UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY%>">Username</label>
+                <input autofocus type="text" placeholder="Username" name="<%= UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY%>" value="<c:if test="${symbol_dollar}{not empty param.login_error}"><%= session.getAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY) %></c:if>" />
+                <label for="<%= UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY%>">Password</label>
+                <input type="password" placeholder="Password" name="<%= UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY%>" /><br>
+                <button type="submit" class="btn">Enviar</button>
+            </form>
         </div>
     </body>
 </html>

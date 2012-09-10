@@ -23,8 +23,6 @@
     <!-- Importing security configurations -->
     <import resource="security.xml"/>
     
-    <bean id="uncaughtExceptionHandler" class="org.easyj.spring.exception.UncaughtExceptionHandler" />
-
     <bean id="config"
           class="org.springframework.beans.factory.config.PropertiesFactoryBean"
           p:singleton="true">
@@ -34,8 +32,6 @@
                   </list>
               </property>
     </bean>
-
-    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="mediaTypes">
@@ -60,7 +56,7 @@
         </property>
         <property name="defaultViews">
             <list>
-                <bean class="org.easyj.spring.view.JSONView"
+                <bean class="org.easyj.rest.view.JSONView"
                       p:encoding="ISO-8859-1"
                       p:preventCache="true"
                       p:dateFormat="yyyy-MM-dd HH:mm:ss"/>

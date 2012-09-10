@@ -13,12 +13,13 @@
         <%@include file="../../../includes/main.jsp" %>
     </head>
     <body>
-        <h1>Users</h1>
-        <div id="main">
-            <table>
+        <div class="container">
+            <h1>Users</h1>
+            <a href="<c:url value="/admin/user/create" />">Add new</a><br><br>
+            <table class="table">
                 <tr>
                     <th>Name</th>
-                    <th><a href="<c:url value="/admin/user/create" />">Add new</a></th>
+                    <th colspan="2">Username</th>
                 </tr>
                 <c:forEach items="${symbol_dollar}{data}" var="user">
                 <tr>
@@ -27,6 +28,7 @@
                 </tr>
                 </c:forEach>
             </table>
+            <a href="<c:url value="/" />" class="btn btn-primary">Home</a>
         </div>
     </body>
 </html>

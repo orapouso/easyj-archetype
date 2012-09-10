@@ -17,8 +17,8 @@
     <sec:http pattern="/*.ico" security="none"/>
     <sec:http pattern="/static/**" security="none"/>
     <sec:http create-session="always" use-expressions="true" auto-config="true" access-denied-page="/denied" >
-        <sec:intercept-url pattern="/admin/**"     access="hasRole('ROLE_ADMIN')" />
-        <sec:intercept-url pattern="/**"           access="hasRole('ROLE_USER')" />
+        <sec:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+        <sec:intercept-url pattern="/**"       access="hasRole('ROLE_USER')" />
 
         <sec:form-login 
             login-processing-url="/authenticate"
@@ -31,10 +31,9 @@
 
     <sec:authentication-manager>
         <sec:authentication-provider>
-            <sec:password-encoder hash="md5" />
             <sec:jdbc-user-service
                 data-source-ref="dataSource"
-                authorities-by-username-query="select u.username, ua.authority from security_user as u, security_user_authority ua where u.id = ua.id_user and u.username=?"
+                authorities-by-username-query="select u.username, ua.id_authority as authority from security_user as u, security_user_authority ua where u.id = ua.id_user and u.username=?"
                 users-by-username-query="select username, password, enabled FROM security_user where username=?" />
         </sec:authentication-provider>
 

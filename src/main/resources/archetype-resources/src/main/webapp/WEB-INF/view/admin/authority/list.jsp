@@ -13,20 +13,23 @@
         <%@include file="../../../includes/main.jsp" %>
     </head>
     <body>
-        <h1>Authorities</h1>
-        <div id="main">
-            <table>
+        <div class="container">
+            <h1>Authorities</h1>
+            <a href="<c:url value="/admin/authority/create" />">Add new</a><br><br>
+            <table class="table">
                 <tr>
-                    <th>Authority</th>
-                    <th><a href="<c:url value="/admin/authority/create" />">Add new</a></th>
+                    <th>Name</th>
+                    <th colspan="2">Authority</th>
                 </tr>
                 <c:forEach items="${symbol_dollar}{data}" var="authority">
                 <tr>
                     <td><a href="<c:url value="/admin/authority/${symbol_dollar}{authority.id}" />">${symbol_dollar}{authority.name}</a></td>
+                    <td>${symbol_dollar}{authority.id}</td>
                     <td><a href="<c:url value="/admin/authority/${symbol_dollar}{authority.id}/edit" />">Edit</a></td>
                 </tr>
                 </c:forEach>
             </table>
+            <a href="<c:url value="/" />" class="btn btn-primary">Home</a>
         </div>
     </body>
 </html>

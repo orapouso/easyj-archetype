@@ -22,16 +22,16 @@ import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import org.easyj.rest.validation.groups.POSTChecks;
 import org.easyj.rest.validation.groups.PUTChecks;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "security_user")
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
     @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id"),
-    @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
-    @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
-    @NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.name = :name"),
-    @NamedQuery(name = "User.findByEnabled", query = "SELECT u FROM User u WHERE u.enabled = :enabled")})
+    @NamedQuery(name = "User.findByIdWithAuthorities", query = "SELECT u FROM User u LEFT JOIN FETCH u.authorities WHERE u.id = :id"),
+    @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username")
+})
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,13 +41,13 @@ public class User implements Serializable {
     @Min(value=0, groups={PUTChecks.class})
     @Column(name = "id", nullable = false)
     private Short id;
-    @NotNull
-    @Size(min = 1, max = 20)
+    @NotEmpty
+    @Size(max = 20)
     @Column(name = "username", nullable = false, length = 20)
     private String username;
-    @NotNull
-    @Size(min = 1, max = 32)
-    @Column(name = "password", nullable = false, length = 32)
+    @NotEmpty(groups={POSTChecks.class})
+    @Size(max = 32)
+    @Column(name = "password", nullable = false, length = 32, updatable=false)
     private String password;
     @NotNull
     @Size(min = 1, max = 90)
@@ -147,7 +147,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "${package}.domain.security.User[ id=" + id + " ]";
+        return "com.redeglobo.deped.mavenproject1.domain.security.User[ id=" + id + " ]";
     }
     
 }

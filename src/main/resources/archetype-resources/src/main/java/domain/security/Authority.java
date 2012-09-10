@@ -12,7 +12,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "security_authority")
@@ -23,7 +22,6 @@ public class Authority implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @NotNull
-    @NotEmpty
     @Size(min = 1, max = 10)
     @Column(name = "id", nullable = false)
     private String id;

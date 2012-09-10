@@ -95,7 +95,7 @@ mysql 5 or greater installed and configured
             6.1 chkconfig: Check if the system has chkconfig to add the script to runlevels
                 chkconfig tomcat on
 
-            6.2 If it doesn't, attach script to /etc/rc$.d directories.
+            6.2 If it doesn't, attach script to /etc/rc.d directories.
                 Execute the following commands:
                 cd /etc/rc2.d
                 ln -s ../init.d/tomcat S90tomcat
