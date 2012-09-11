@@ -47,7 +47,7 @@ public class User implements Serializable {
     private String username;
     @NotEmpty(groups={POSTChecks.class})
     @Size(max = 32)
-    @Column(name = "password", nullable = false, length = 32, updatable=false)
+    @Column(name = "password", nullable = false, length = 32)
     private String password;
     @NotNull
     @Size(min = 1, max = 90)

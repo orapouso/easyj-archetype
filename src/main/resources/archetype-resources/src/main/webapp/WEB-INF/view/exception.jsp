@@ -8,10 +8,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Exception</title>
+        <title>${artifactId} - Exception</title>
+        <%@include file="../includes/main.jsp" %>
     </head>
     <body>
-        <h1>Infelizmente uma exceção ocorreu</h1>
-        ${symbol_dollar}{exception}
+        <div class="container">
+            <h1>Infelizmente uma exceção ocorreu</h1>
+            ${symbol_dollar}{exception}
+        </div>
     </body>
 </html>
