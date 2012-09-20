@@ -9,12 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>${artifactId} - Acesso Negado</title>
-        <%@include file="../includes/main.jsp" %>
+        <title>${project.name} - Acesso Negado</title>
+        <%@include file="../includes/statics.jsp" %>
     </head>
     <body>
         <div class="container">
-            <h1>${artifactId} - Acesso Negado</h1>
+            <h1>${symbol_dollar}{project.name} - Acesso Negado</h1>
             <p>O conteúdo que você está tentando acessar é restrito e você não tem permissão de acessá-lo.</p>
             <p>Por favor, entre com outro usuário neste <a href="<c:url value="/login"/>">link</a>.</p>
             <p>Caso tenha alguma dúvida, basta entrar em contato com o suporte.</p>

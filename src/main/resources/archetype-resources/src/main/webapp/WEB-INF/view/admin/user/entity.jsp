@@ -3,15 +3,15 @@
 #set( $symbol_escape = '\' )
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
+<c:set var="path" value="/admin/user" />
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>User ${symbol_dollar}{data.name}</title>
-        <%@include file="../../../includes/main.jsp" %>
+        <title>${project.name} - User ${symbol_dollar}{data.name}</title>
+        <%@include file="../../../includes/statics.jsp" %>
     </head>
     <body>
         <div class="container">
@@ -24,8 +24,8 @@
                 ${symbol_dollar}{authority.name}<c:if test="${symbol_dollar}{not status.last}">, </c:if>
             </c:forEach>]
             <br/><br/>
-            <a href="<c:url value="/admin/user/${symbol_dollar}{data.id}/edit" />" class="btn btn-primary">Edit</a>
-            <a href="<c:url value="/admin/user" />" class="btn">Users</a>
+            <a href="<c:url value="${symbol_dollar}{path}/${symbol_dollar}{data.id}/edit" />" class="btn btn-primary">Edit</a>
+            <a href="<c:url value="${symbol_dollar}{path}" />" class="btn">Users</a>
         </div>
     </body>
 </html>

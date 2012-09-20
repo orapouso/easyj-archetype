@@ -10,8 +10,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>${artifactId} - Main</title>
-        <%@include file="../includes/main.jsp" %>
+        <title>${project.name} - Main</title>
+        <%@include file="../includes/statics.jsp" %>
     </head>
     <body>
         <div class="container">

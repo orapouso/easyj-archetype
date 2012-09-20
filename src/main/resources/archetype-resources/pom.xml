@@ -7,7 +7,7 @@
     <groupId>${groupId}</groupId>
     <artifactId>${artifactId}</artifactId>
     <version>${version}</version>
-    <name>${artifactId}</name>
+    <name>${webAppName}</name>
     <packaging>war</packaging>
     <url>http://maven.apache.org</url>
     <repositories>
@@ -62,7 +62,7 @@
             </exclusions>
         </dependency>
 
-        <!-- Temporary direct deps as Spring Security does not updates its dep tree that depends on 3.0.6 libs -->
+        <!-- Temporary direct deps as Spring Security does not updates its dep tree that depends on 3.0.7 libs -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -114,7 +114,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${org.slf4j.version}</version>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
@@ -124,13 +124,13 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>${org.slf4j.version}</version>
+            <version>${slf4j.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
+            <version>${slf4j.version}</version>
             <scope>runtime</scope>
         </dependency>
  
@@ -139,11 +139,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
@@ -156,6 +151,11 @@
             <version>${cglib.version}</version>
         </dependency>
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>6.0</version>
@@ -165,15 +165,15 @@
     </dependencies>
     <properties>
         <!-- VERSIONS -->
-        <junit.version>4.10</junit.version>
-        <easyj.version>1.2.0</easyj.version>
-        <log4j.version>1.2.16</log4j.version>
-        <org.slf4j.version>1.6.4</org.slf4j.version>
-        <spring-security.version>3.1.0.RELEASE</spring-security.version>
-        <spring.version>3.1.0.RELEASE</spring.version>
-        <jackson.version>1.9.1</jackson.version>
-        <cglib.version>2.2.2</cglib.version>
-        <mysql.version>5.1.18</mysql.version>
+        <junit.version>${junit-version}</junit.version>
+        <log4j.version>${log4j-version}</log4j.version>
+        <slf4j.version>${slf4j-version}</slf4j.version>
+        <easyj.version>${easyj-version}</easyj.version>
+        <spring-security.version>${spring-security-version}</spring-security.version>
+        <spring.version>${spring-version}</spring.version>
+        <jackson.version>${jackson-version}</jackson.version>
+        <cglib.version>${cglib-version}</cglib.version>
+        <mysql.version>${mysql-version}</mysql.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <build>
@@ -249,6 +249,11 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>1.3.1</version>
             </plugin>
         </plugins>
     </build>

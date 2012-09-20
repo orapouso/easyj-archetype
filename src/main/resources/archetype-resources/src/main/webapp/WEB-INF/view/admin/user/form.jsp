@@ -7,16 +7,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
+<c:set var="path" value="/admin/user" />
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>User ${symbol_dollar}{not empty data.id ? data.name : 'New'}</title>
-        <%@include file="../../../includes/main.jsp" %>
+        <title>${project.name} - User ${symbol_dollar}{not empty data.id ? data.name : 'New'}</title>
+        <%@include file="../../../includes/statics.jsp" %>
     </head>
     <body>
         <div class="container">
             <h1>User: ${symbol_dollar}{not empty data.id ? data.name : 'New'}</h1>
-            <c:url var="action" value="/admin/user${symbol_dollar}{not empty data.id ? '/' : ''}${symbol_dollar}{data.id}" />
+            <c:url var="action" value="${symbol_dollar}{path}${symbol_dollar}{not empty data.id ? '/' : ''}${symbol_dollar}{data.id}" />
             <form:form action="${symbol_dollar}{action}" method="POST" modelAttribute="data" autocomplete="off">
                 <c:if test="${symbol_dollar}{not empty data.id}">
                     <input type="hidden" name="_method" value="PUT"/>
@@ -53,7 +54,7 @@
                 </form:select>
                 <div class="control-group">
                     <button type="submit" class="btn btn-success">Send</button>
-                    <a href="<c:url value="/admin/user" />" class="btn">Cancel</a>
+                    <a href="<c:url value="${symbol_dollar}{path}" />" class="btn">Cancel</a>
                 </div>
             </form:form>
             <c:if test="${symbol_dollar}{not empty data.id}">
