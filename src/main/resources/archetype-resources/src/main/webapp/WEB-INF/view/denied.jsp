@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>${project.name} - Acesso Negado</title>
+        <title>${symbol_dollar}{project.name} - Acesso Negado</title>
         <%@include file="../includes/statics.jsp" %>
     </head>
     <body>

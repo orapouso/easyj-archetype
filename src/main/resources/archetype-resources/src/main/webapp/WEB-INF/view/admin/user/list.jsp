@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>${project.name} - Users</title>
+        <title>${symbol_dollar}{project.name} - Users</title>
         <%@include file="../../../includes/statics.jsp" %>
     </head>
     <body>
@@ -24,6 +24,7 @@
                 </tr>
                 <c:forEach items="${symbol_dollar}{data}" var="entity">
                 <tr>
+                    <td><a href="<c:url value="${symbol_dollar}{path}/${symbol_dollar}{entity.id}" />">${symbol_dollar}{entity.name}</a></td>
                     <td><a href="<c:url value="${symbol_dollar}{path}/${symbol_dollar}{entity.id}" />">${symbol_dollar}{entity.username}</a></td>
                     <td><a href="<c:url value="${symbol_dollar}{path}/${symbol_dollar}{entity.id}/edit" />">Edit</a></td>
                 </tr>

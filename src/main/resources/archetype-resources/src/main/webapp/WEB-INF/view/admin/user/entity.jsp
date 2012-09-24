@@ -10,12 +10,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>${project.name} - User ${symbol_dollar}{data.name}</title>
+        <title>${symbol_dollar}{project.name} - User ${symbol_dollar}{data.name}</title>
         <%@include file="../../../includes/statics.jsp" %>
     </head>
     <body>
         <div class="container">
-            <h1>User: ${symbol_dollar}{data.name}</h1>
+            <h1>User</h1>
             <strong>Name:</strong> ${symbol_dollar}{data.name}<br/>
             <strong>Username:</strong> ${symbol_dollar}{data.username}<br/>
             <strong>Enabled?</strong> ${symbol_dollar}{data.enabled ? "Sim" : "Não"}<br/>

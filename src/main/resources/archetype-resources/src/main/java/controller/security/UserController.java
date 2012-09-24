@@ -11,17 +11,11 @@ import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin/user")
 public class UserController extends JPAGenericEntityController<User, Short>{
-
-    @ModelAttribute("auths")
-    protected List<Authority> auths() {
-        return getService().findAll(Authority.class);
-    }
 
     @Override
     protected User findOne(Short primaryKey) {

@@ -10,12 +10,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>${project.name} - Authority ${symbol_dollar}{data.name}</title>
+        <title>${symbol_dollar}{project.name} - Authority ${symbol_dollar}{data.name}</title>
         <%@include file="../../../includes/statics.jsp" %>
     </head>
     <body>
         <div class="container">
-            <h1>Authority: ${symbol_dollar}{data.name}</h1>
+            <h1>Authority</h1>
             <strong>Authority:</strong> ${symbol_dollar}{data.id}<br/>
             <strong>Name:</strong> ${symbol_dollar}{data.name}
             <br/><br/>

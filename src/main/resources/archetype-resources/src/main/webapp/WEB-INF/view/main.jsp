@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>${project.name} - Main</title>
+        <title>${symbol_dollar}{project.name} - Main</title>
         <%@include file="../includes/statics.jsp" %>
     </head>
     <body>
