@@ -14,7 +14,13 @@ function ajaxSubmitSave(form) {
     form = $(form);
     form.validate({
         errorPlacement: function(error, element) {
-            error.appendTo(element.parent().find(".error"));
+            error.appendTo(element.parents(".control-group").find(".help-inline"));
+        },
+        highlight: function(element, errorClass) {
+            $(element).parents(".control-group").addClass(errorClass);
+        },
+        unhighlight: function(element, errorClass) {
+            $(element).parents(".control-group").removeClass(errorClass);
         },
         submitHandler: function(form) {
             ajaxSubmit($(form));
