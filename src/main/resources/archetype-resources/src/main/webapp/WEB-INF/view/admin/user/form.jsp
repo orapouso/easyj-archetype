@@ -34,7 +34,7 @@
     <body>
         <div class="container">
             <h1>User: ${symbol_dollar}{not empty data.id ? data.name : 'New'}</h1>
-            <form:form action="${symbol_dollar}{action}" method="POST" modelAttribute="data" autocomplete="off" cssClass="save">
+            <form:form action="${symbol_dollar}{action}" method="POST" modelAttribute="data" autocomplete="off" cssClass="save form-horizontal">
                 <c:if test="${symbol_dollar}{not empty data.id}">
                     <input type="hidden" name="_method" value="PUT"/>
                 </c:if>
@@ -42,51 +42,70 @@
                     <input type="hidden" name="enabled" value="1"/>
                 </c:if>
                 <div class="control-group">
-                    <label for="name"><strong>Name:</strong></label>
-                    <form:input path="name" placeholder="Name" cssClass="required" maxlength="90" />
-                    <div class="control-group error help-inline">
-                        <form:errors path="name" cssClass="help-inline" />
+                    <label for="name" class="control-label"><strong>Name:</strong></label>
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-star" title="required"></i></span>
+                            <form:input path="name" placeholder="Name" cssClass="required" maxlength="90" />
+                        </div>
+                        <div class="help-inline"><form:errors path="name" /></div>
                     </div>
                 </div>
                 <div class="control-group">
-                    <label for="username"><strong>Username:</strong></label>
-                    <form:input path="username" placeholder="Username" cssClass="required" maxlength="20" />
-                    <div class="control-group error help-inline">
-                        <form:errors path="username" cssClass="help-inline" />
+                    <label for="username" class="control-label"><strong>Username:</strong></label>
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-star" title="required"></i></span>
+                            <form:input path="username" placeholder="Username" cssClass="required" maxlength="60" />
+                        </div>
+                        <div class="help-inline"><form:errors path="username" /></div>
                     </div>
                 </div>
                 <div class="control-group">
-                    <label for="password"><strong>Password:</strong></label>
-                    <form:password path="password" placeholder="Password" cssClass="required" maxlength="32" />
-                    <div class="control-group error help-inline">
-                        <form:errors path="password" cssClass="help-inline" />
+                    <label for="password" class="control-label"><strong>Password:</strong></label>
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-star" title="required"></i></span>
+                            <form:password path="password" placeholder="Password" cssClass="required" maxlength="32" />
+                        </div>
+                        <div class="help-inline"><form:errors path="password" /></div>
                     </div>
                 </div>
             <c:if test="${symbol_dollar}{not empty data.id}">
                 <div class="control-group">
-                    <label for="enabled" class="checkbox">
-                        <strong>Enabled</strong>
-                        <form:checkbox path="enabled" />
-                    </label>
+                    <label for="enabled" class="control-label"><strong>Enabled:</strong></label>
+                    <div class="controls">
+                        <label for="enabled" class="checkbox">
+                            <form:checkbox path="enabled" />
+                        </label>
+                    </div>
                 </div>
             </c:if>
                 <div class="control-group">
-                    <label for="authorities"><strong>Authorities</strong></label>
-                    <form:select path="authorities" multiple="multiple">
-                        <form:options items="${symbol_dollar}{auths}" itemLabel="name" itemValue="id" />
-                    </form:select>
+                    <label for="authorities" class="control-label"><strong>Authorities</strong></label>
+                    <div class="controls">
+                        <form:select path="authorities" multiple="multiple">
+                            <form:options items="${symbol_dollar}{auths}" itemLabel="name" itemValue="id" />
+                        </form:select>
+                    </div>
                 </div>
                 <div class="control-group">
-                    <button type="submit" class="btn btn-success">Send</button>
-                    <a href="<c:url value="${symbol_dollar}{path}" />" class="btn">Cancel</a>
+                    <div class="offset2">
+                        <button type="submit" class="btn btn-success">Send</button>
+                        <a href="<c:url value="${symbol_dollar}{path}" />" class="btn">Cancel</a>
+                    </div>
                 </div>
             </form:form>
-            <c:if test="${symbol_dollar}{not empty data.id}">
-                <form:form action="${symbol_dollar}{action}" method="POST" cssClass="delete">
-                    <input type="hidden" name="_method" value="DELETE"/>
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form:form>
-            </c:if>
+        <c:if test="${symbol_dollar}{not empty data.id}">
+            <form:form action="${symbol_dollar}{action}" method="POST" cssClass="delete">
+                <div class="control-group">
+                    <div class="offset2">
+                        <input type="hidden" name="_method" value="DELETE"/>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </form:form>
+        </c:if>
         </div>
     </body>
 </html>
